@@ -12,13 +12,15 @@ if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion')
 		require_once($_SERVER['DOCUMENT_ROOT'].'/TP_openclassroom/03-Quiz/controleur/fonction.php');
 
 		//$bdd=connexion();
-
+		$erreur = '';
 		//print_r($bdd);
 		//Vérification de l'existance du Login/Mot de passe 
 		$result=recupinfouser($_POST['login'], $_POST['pass']);
 
 		// Affichage de la page membre si le login / mot de passe sont bons.
-		verifcompte($result, $_POST['login']);
+		$erreur = verifcompte($result, $_POST['login']);
+
+		//echo $erreur;
 	}
 	else 
 	{

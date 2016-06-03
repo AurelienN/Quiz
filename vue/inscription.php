@@ -15,8 +15,9 @@ if (isset($_POST['inscription']) && $_POST['inscription'] == 'Inscription')
 		$result=recupinfouser($_POST['login'], $_POST['pass']);
 
 		// Affichage de la page membre si le login / mot de passe sont bons.
-		verifcompte($result, $_POST['login']);
+		$erreur = verifcompte($result, $_POST['login']);
 
+		print_r($result[0]);
 			if ($result[0] == 0) 
 			{
 				createuser($_POST['login'], $_POST['pass'], $_POST['mail']);
