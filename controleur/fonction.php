@@ -1,5 +1,7 @@
 <?php
 
+	require_once($_SERVER['DOCUMENT_ROOT'].'/TP_openclassroom/03-Quiz/modele/ListeRequete.php');
+
 function verifcompte($result, $login)
 {
 	//print_r($result);
@@ -12,13 +14,23 @@ function verifcompte($result, $login)
 		case '1':
 			session_start();
 			$_SESSION['login'] = $login;
-			header('Location: membre.php');
+			header('Location: vue\membre.php');
 			break;
 		default:
 			$erreur = 'Probème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.';
 			return $erreur;
 			break;
 	}
+}
+
+function VerifMail($email)
+{
+	// Déclaration de la regex permettant de vérifier l'adresse email
+	$mailRegex = "#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#";
+
+	$VerifMail = preg_match($mailRegex, $email);
+
+	//return $mailverif;
 }
 
 function redirection($login)
@@ -45,4 +57,12 @@ function verifSetLogin($login)
 		header ('Location: ..\index.php');
 		exit();
 	}
+}
+
+function GetIdUser($login)
+{
+	$iduser = recupIDuser($login);
+
+	$_SESSION['id'] = $iduser[0];
+	return $iduser[0];
 }

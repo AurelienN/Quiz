@@ -35,3 +35,22 @@ function createuser($login, $pass, $mail)
 					'email' => $mail
 					));
 }
+
+function recupIDuser($login)
+{
+		
+		$bdd=connexion();
+
+		// on teste si une entrée de la base contient ce couple login / pass
+		$RecupInfoUser = $bdd->prepare('SELECT id FROM user WHERE pseudo = :pseudo');
+
+		//echo $login & ' ' & $pass;
+
+		$RecupInfoUser-> execute(array(
+			'pseudo' => $login
+			));
+
+		$iduser = $RecupInfoUser->fetch();
+
+		return $iduser;
+}
