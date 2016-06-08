@@ -61,10 +61,11 @@ function recupHistoQuizUser($iduser)
 		$bdd=connexion();
 
 		// on teste si une entrée de la base contient ce couple login / pass
-		$RecupInfoUser = $bdd->prepare('SELECT q.titre as titre, ROUND((h.score_brute/h.nb_question)*100) AS Score
+		$RecupInfoUser = $bdd->prepare('SELECT q.titre as titre, ROUND(sum(h.score_brute)/sum(h.nb_question)*100) AS Score
 										FROM historique h	
 										INNER JOIN quiz q on h.quiz_id = q.id
-										where h.user_id = :id');
+										where h.user_id = :id
+										GROUP BY 1');
 
 		//echo $login & ' ' & $pass;
 

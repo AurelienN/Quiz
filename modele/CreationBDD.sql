@@ -60,6 +60,12 @@ CREATE TABLE IF NOT EXISTS `historique` (
   KEY `fk_histo_quiz` (`quiz_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+INSERT INTO `historique` (`id`, `quiz_id`, `user_id`, `score_brute`, `nb_question`) VALUES
+(1, 1, 2, 4, 10),
+(2, 3, 2, 10, 10),
+(3, 1, 2, 10, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -169,6 +175,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ind_pseudo` (`pseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `avg_score`, `nb_quiz`, `date_inscription`) VALUES
+(1, 'aurelien', 'anollet1981@gmail.com', '723e600bd910678898e532e0df98b93c3a842041', 0, 0, '2016-06-08 21:46:25'),
+(2, 'root', 'anollet1981@gmail.com', '723e600bd910678898e532e0df98b93c3a842041', 0, 0, '2016-06-08 21:55:09');
 
 --
 -- Contraintes pour les tables exportées
