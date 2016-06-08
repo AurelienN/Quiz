@@ -28,8 +28,8 @@ if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion')
 	}
 }
 ?>
-<html>
-<head>
+<?php include("vue/entete.php"); ?>
+
 <title>Accueil</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
@@ -43,7 +43,7 @@ Connexion à l'espace membre :<br />
 	</form>
 <a href="vue\inscription.php">Vous inscrire</a>
 <?php
-	if (isset($erreur)) echo '<br /><br />',$erreur;
+	if (isset($erreur)) echo '<br /><br /><p class="erreur"> Erreur : ',$erreur;
 ?>
 </body>
 </html>

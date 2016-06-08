@@ -38,8 +38,7 @@ if (isset($_POST['inscription']) && $_POST['inscription'] == 'Inscription')
 	}
 }
 ?>
-<html>
-<head>
+<?php include("entete2.php"); ?>
 <title>Inscription</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
@@ -54,7 +53,7 @@ Adresse e-mail : <input type="text" name="mail" value="<?php if (isset($_POST['m
 <input type="submit" name="inscription" value="Inscription">
 </form>
 <?php
-if (isset($erreur)) echo '<br />',$erreur;
+if (isset($erreur)) echo '<br /><br /><p class="erreur">  Erreur : ',$erreur;
 ?>
 </body>
 </html>
