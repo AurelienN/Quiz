@@ -54,3 +54,26 @@ function recupIDuser($login)
 
 		return $iduser;
 }
+
+function recupHistoQuizUser($iduser)
+{
+		
+		$bdd=connexion();
+
+		// on teste si une entrée de la base contient ce couple login / pass
+		$RecupInfoUser = $bdd->prepare('SELECT q.titre as titre, ROUND((h.score_brut/h.nb_question)*100) AS Score
+										FROM historique h	
+										INNER JOIN quiz q on h.quiz_id = q.id
+										where h.user_id = :id');
+
+		//echo $login & ' ' & $pass;
+
+		$RecupInfoUser-> execute(array(
+			'id' => $iduser
+			));
+
+		//$iduser = $RecupInfoUser->fetch();
+		$quizs = $RecupInfoUser->fetchAll();
+		
+		return $quizs;
+}

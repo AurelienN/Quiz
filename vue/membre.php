@@ -15,6 +15,8 @@
 <body>
 Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> votre id est : <?php echo $_SESSION['id']; ?> et bienvenue sur le quiz !<br />
 
+<?php GetHistoQuizUser($iduser) ?>
+
 <a href="deconnexion.php">Déconnexion</a>
 </body>
 </html>

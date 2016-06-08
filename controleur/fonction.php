@@ -66,3 +66,16 @@ function GetIdUser($login)
 	$_SESSION['id'] = $iduser[0];
 	return $iduser[0];
 }
+
+function GetHistoQuizUser($IdUser)
+{
+	$quizs = recupHistoQuizUser($IdUser);
+
+	foreach($quizs as $cle => $quiz)
+	{
+	    $quizs[$cle]['titre'] = htmlspecialchars($quiz['titre']);
+	    $quizs[$cle]['Score'] = nl2br(htmlspecialchars($quiz['Score']));
+	}
+
+	include_once('..\vue\membreAffResul.php');
+}
