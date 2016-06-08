@@ -26,7 +26,7 @@ function createuser($login, $pass, $mail)
 {
 				$bdd = connexion();
 
-				$NewUser = $bdd->prepare('INSERT INTO user(pseudo, password, email, date_inscription) VALUES(:pseudo, :password, :email, NOW())');
+				$NewUser = $bdd->prepare('INSERT INTO user(pseudo, password, email,	avg_score, nb_quiz, date_inscription) VALUES(:pseudo, :password, :email, 0, 0, NOW())');
 
 				//execution de la requete avec les paramètres
 				$NewUser->execute(array(
@@ -61,7 +61,7 @@ function recupHistoQuizUser($iduser)
 		$bdd=connexion();
 
 		// on teste si une entrée de la base contient ce couple login / pass
-		$RecupInfoUser = $bdd->prepare('SELECT q.titre as titre, ROUND((h.score_brut/h.nb_question)*100) AS Score
+		$RecupInfoUser = $bdd->prepare('SELECT q.titre as titre, ROUND((h.score_brute/h.nb_question)*100) AS Score
 										FROM historique h	
 										INNER JOIN quiz q on h.quiz_id = q.id
 										where h.user_id = :id');

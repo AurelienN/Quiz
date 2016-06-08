@@ -50,11 +50,14 @@ INSERT INTO `explication` (`id`, `intitulé`, `reponse_id`) VALUES
 
 DROP TABLE IF EXISTS `historique`;
 CREATE TABLE IF NOT EXISTS `historique` (
+  `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT,
   `quiz_id` int(100) UNSIGNED NOT NULL,
   `user_id` int(100) UNSIGNED NOT NULL,
   `score_brute` int(100) NOT NULL,
-  PRIMARY KEY (`quiz_id`,`user_id`),
-  KEY `fk_histo_user` (`user_id`)
+  `nb_question` int(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_histo_user` (`user_id`),
+  KEY `fk_histo_quiz` (`quiz_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -158,9 +161,11 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `avg_score` int(255) NOT NULL,
   `nb_quiz` int(100) NOT NULL,
+  `date_inscription` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ind_pseudo` (`pseudo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -186,10 +191,10 @@ ALTER TABLE `historique`
 -- Contraintes pour la table `question`
 --
 ALTER TABLE `question`
-  ADD CONSTRAINT `FK_quiz_question` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_quiz_question` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  ADD CONSTRAINT `FK_question_reponse` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_question_reponse` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

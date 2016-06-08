@@ -39,8 +39,12 @@ FROM quiz q
 --
 -- Aurelien le 08/06/2016
 -- Requête pour récupérer le score aux quizs
+--
 
 SELECT q.titre as titre, (h.score_brut/h.nb_question)*100 AS Score
 FROM historique h	
 INNER JOIN quiz q on h.quiz_id = q.id
 where h.user_id = 3
+
+
+-- Table historique à modifier avec un champs id et supprimer la clé primaire sur les 2 champs étrangers.

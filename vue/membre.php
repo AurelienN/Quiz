@@ -8,7 +8,7 @@
 ?>
 
 <?php include("entete2.php"); ?>
-<title>Espace membre</title>
+<title>Quiz</title>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 </head>
 
