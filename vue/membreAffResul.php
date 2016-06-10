@@ -14,21 +14,25 @@
 
 <body>
 <!-- Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> votre id est : <?php echo $_SESSION['id']; ?> et bienvenue sur le quiz !<br />-->
-<?php
-foreach($quizs as $quiz)
-{
-?>
-<div class="quiz">
-    <h3>
-        <?php echo $quiz['titre']; ?>
-        <em>Votre score était de : <?php echo $quiz['Score']; ?>%</em>
-    </h3>
-    
-   
-</div>
-<?php
-}
-?>
+        <table>
+        	<tr>
+        		<th>Titre</th>
+        		<th>Score</th>
+        	</tr>
+	        <?php
+			foreach($quizs as $quiz)
+			{
+			?>
+			<div class="quiz">
+			        	<tr>
+			        		<td><?php echo $quiz['titre']; ?></td>
+					        <td><?php echo $quiz['Score']; ?>%</td>
+				        </tr>
+			</div>
+			<?php
+			}
+			?>
+		</table>
 <!-- <a href="deconnexion.php">Déconnexion</a> -->
 </body>
 </html>
