@@ -8,19 +8,18 @@
 	<table>
 		<caption>Vos résultats aux Quiz.</caption>
 		<tr>
-			<th>Titre</th>
-			<th>Score</th>
+			<th class="quiz">Titre</th>
+			<th class="quiz">Score</th>
 		</tr>
 	    <?php
 		foreach($quizs as $quiz)
 		{
 		?>
-		<div class="quiz">
-		        	<tr>
-		        		<td><?php echo $quiz['titre']; ?></td>
-				        <td><?php echo $quiz['Score']; ?>%</td>
-			        </tr>
-		</div>
+		
+	    	<tr class="quiz">
+	    		<td class="quiz"><?php echo $quiz['titre']; ?></td>
+		        <td class="quiz"><?php echo $quiz['Score']; ?>%</td>
+	        </tr>
 		<?php
 		}
 		?>

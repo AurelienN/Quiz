@@ -14,8 +14,10 @@
 
 <body>
 <div class="User">
-	Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> votre id est : <?php echo $_SESSION['id']; ?> et bienvenue sur le quiz !<br />
-</div>
+	Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> </div> 
+	<br>
+	<em> et bon courage pour le quiz !</em> 
+	<br>
 
 <!-- Affichage de l'historique -->
 <?php GetHistoQuizUser($iduser) ?>

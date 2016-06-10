@@ -68,3 +68,11 @@ INSERT INTO tt_2root (id_question, intitule, id_reponse, intitule_reponse, bonne
 
 SELECT * FROM tt_2root;
 
+--
+-- Aurelien le 10/06/2016
+-- Requete pour obtenir le nombre de réponse à une question.
+-- Utile pour la boucle de récupération des réponses.
+-- 
+
+SELECT count(*) FROM reponse WHERE question_id = :id
+

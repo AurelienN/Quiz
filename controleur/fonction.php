@@ -79,3 +79,22 @@ function GetHistoQuizUser($IdUser)
 
 	include_once('..\vue\membreAffResul.php');
 }
+function GetNbQuiz()
+{
+	$NbQuiz = CountQuiz();
+	return $NbQuiz;
+}
+
+function AfficherListeQuiz()
+{
+	$lquizs = recupListeQuiz();
+
+	//return $ListeQuiz[0];
+
+	foreach($lquizs as $cle => $lquiz)
+	{
+		$lquizs[$cle]['titre'] = htmlspecialchars($lquiz['titre']);
+	
+	}
+	include_once('..\vue\quizAffResultat.php');
+}

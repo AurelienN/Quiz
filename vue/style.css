@@ -11,7 +11,14 @@ table
 {
     border-collapse: collapse;
 }
-td, th /* Mettre une bordure sur les td ET les th */
+/* Mettre une bordure sur les td ET les th */
+/*td, th 
+{
+    border: 1px solid black;
+    width: 100px;
+    text-align: center;
+}*/
+.quiz
 {
     border: 1px solid black;
     width: 100px;
@@ -27,6 +34,10 @@ td, th /* Mettre une bordure sur les td ET les th */
 .user
 {
 	font-weight: bold;
+	text-decoration: underline;
+}
+.clignotant
+{
 	text-decoration: underline;
 }
 caption

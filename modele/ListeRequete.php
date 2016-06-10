@@ -83,9 +83,31 @@ function GetNbRepParQuestion($idquestion)
 {
 	$bdd=connexion();
 
-	$nbrepparque = bdd->prepare('SELECT count(*) FROM reponse WHERE question_id = :id');
+	$nbrepparque = $bdd->prepare('SELECT count(*) FROM reponse WHERE question_id = :id');
 	$nbrepparque->execute(array('id' => $idquestion));
 	$NbRep = $nbrepparque->fetch();
 
 	return $NbRep;
+}
+
+function recupListeQuiz()
+{
+	$bdd=connexion();
+
+	$RecuplisteQuiz=$bdd->prepare('SELECT distinct id, titre FROM quiz ORDER BY 2');
+	$RecuplisteQuiz->execute();
+	$listeQuiz=$RecuplisteQuiz->fetchAll();
+
+	return $listeQuiz;
+}
+
+function CountQuiz()
+{
+	$bdd=connexion();
+
+	$RecupNbQuiz=$bdd->prepare('SELECT count(*) FROM quiz');
+	$RecupNbQuiz->execute();
+	$NbQuiz=$RecupNbQuiz->fetch();
+
+	return $NbQuiz;
 }
