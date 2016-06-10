@@ -1,9 +1,42 @@
+/* Mise en forme des pages */
+
 html
 {
 	background-color: #CCFF33;
 }
 
+/* Mise en forme des tableaux */
+
+table
+{
+    border-collapse: collapse;
+}
+td, th /* Mettre une bordure sur les td ET les th */
+{
+    border: 1px solid black;
+    width: 100px;
+    text-align: center;
+}
+
+/* Mise en forme du texte et des couleurs */
 .erreur
 {
 	color: red;
+}
+
+.user
+{
+	font-weight: bold;
+	text-decoration: underline;
+}
+caption
+{
+    font-weight: bold;
+    color: blue;
+}
+
+th
+{
+	font-weight: bold;
+	color: #00d4ff;
 }

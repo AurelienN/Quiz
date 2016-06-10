@@ -48,3 +48,23 @@ where h.user_id = 3
 
 
 -- Table historique à modifier avec un champs id et supprimer la clé primaire sur les 2 champs étrangers.
+
+
+CREATE TABLE tt_2root(
+  ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  id_question INT(10) UNSIGNED,
+  intitule VARCHAR(255),
+  id_reponse INT(10) UNSIGNED,
+  intitule_reponse VARCHAR(255),
+  bonne_reponse INT(10),
+  reponse_user INT(10)
+);
+
+INSERT INTO tt_2root (id_question, intitule, id_reponse, intitule_reponse, bonne_reponse) VALUES(1, 'Quel est le nom du chien de mickey?', 1, 'Pluto', 1);
+
+SELECT * FROM tt_2root;
+
+INSERT INTO tt_2root (id_question, intitule, id_reponse, intitule_reponse, bonne_reponse) VALUES(1, 'Quel est le nom du chien de mickey?', 2, 'rantanplan', 0);
+
+SELECT * FROM tt_2root;
+

@@ -13,10 +13,19 @@
 </head>
 
 <body>
-Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> votre id est : <?php echo $_SESSION['id']; ?> et bienvenue sur le quiz !<br />
+<div class="User">
+	Bienvenue <?php echo htmlentities(trim($_SESSION['login'])); ?> votre id est : <?php echo $_SESSION['id']; ?> et bienvenue sur le quiz !<br />
+</div>
 
+<!-- Affichage de l'historique -->
 <?php GetHistoQuizUser($iduser) ?>
 
+<!-- Accès aux Quizs -->
+<a href="quiz.php">Accéder aux quiz</a>
+<br>
+<!-- Lien de déconnexion -->
 <a href="deconnexion.php">Déconnexion</a>
+
+<?php echo $_SESSION['id'].$_SESSION['login']; ?>
 </body>
 </html>

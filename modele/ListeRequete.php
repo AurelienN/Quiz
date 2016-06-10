@@ -78,3 +78,14 @@ function recupHistoQuizUser($iduser)
 		
 		return $quizs;
 }
+
+function GetNbRepParQuestion($idquestion)
+{
+	$bdd=connexion();
+
+	$nbrepparque = bdd->prepare('SELECT count(*) FROM reponse WHERE question_id = :id');
+	$nbrepparque->execute(array('id' => $idquestion));
+	$NbRep = $nbrepparque->fetch();
+
+	return $NbRep;
+}
