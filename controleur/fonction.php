@@ -67,7 +67,7 @@ function GetIdUser($login)
 	return $iduser[0];
 }
 
-function GetHistoQuizUser($IdUser)
+function GetHistoQuizUser($IdUser) //Retourne les scores et les types de quiz que l'utilisateur a fait.
 {
 	$quizs = recupHistoQuizUser($IdUser);
 
@@ -79,13 +79,14 @@ function GetHistoQuizUser($IdUser)
 
 	include_once('..\vue\membreAffResul.php');
 }
-function GetNbQuiz()
+
+function GetNbQuiz() //Retourne le nombre de type de quiz
 {
 	$NbQuiz = CountQuiz();
 	return $NbQuiz;
 }
 
-function AfficherListeQuiz()
+function AfficherListeQuiz() //retourne la liste des types de quiz disponible.
 {
 	$lquizs = recupListeQuiz();
 
@@ -97,4 +98,15 @@ function AfficherListeQuiz()
 	
 	}
 	include_once('..\vue\quizAffResultat.php');
+}
+
+
+function Drop($name)
+{
+	DropTT($name);
+}
+
+function create($name)
+{
+	CreateTT($name);
 }

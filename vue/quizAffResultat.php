@@ -4,23 +4,25 @@
 </head>
 
 <body>
+	<h3>A quel type de quiz souhaitez-vous répondre?</h3>
 	<br>
-	<table>
-		<caption>Liste des Quiz disponible</caption>
-	    <?php
-		foreach($lquizs as $lquiz)
-		{
+	<form method="post" action="questionnaire.php">
+	 	<?php
+			foreach($lquizs as $lquiz)
+			{
 		?>
-		<div class="Lquiz">
-		        	<tr class="Lquiz">
-		        		<td><?php echo $lquiz['titre']; ?></td>
-			        </tr>
-		</div>
+			<input type="radio" name="categorie" value="<?php echo $lquiz['titre']; ?>" id="<?php echo $lquiz['titre']; ?>" /> <label for="<?php echo $lquiz['titre']; ?>"> <?php echo $lquiz['titre']; ?> </label>
+			<br><br>
 		<?php
-		}
+			}
 		?>
-	</table>
+		<input type="submit" value="Valider" />
+	</form>
 	<br>
 <!-- <a href="deconnexion.php">Déconnexion</a> -->
 </body>
 </html>
+
+
+
+ 

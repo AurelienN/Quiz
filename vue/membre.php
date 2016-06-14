@@ -27,7 +27,7 @@
 <br>
 <!-- Lien de déconnexion -->
 <a href="deconnexion.php">Déconnexion</a>
-
+<br>
 <?php echo $_SESSION['id'].$_SESSION['login']; ?>
 </body>
 </html>

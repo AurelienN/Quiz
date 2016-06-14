@@ -111,3 +111,21 @@ function CountQuiz()
 
 	return $NbQuiz;
 }
+
+function DropTT($name)
+{
+	$bdd=connexion();
+
+	$DropTT=$bdd->prepare('DROP TABLE IF EXISTS '. $name );
+	$DropTT->execute();
+}
+
+function CreateTT($name)
+{
+	$bdd=connexion();
+
+	$requete='CREATE TABLE IF NOT EXISTS '. $name .'(ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, id_question INT(10) UNSIGNED, intitule VARCHAR(255), id_reponse INT(10) UNSIGNED, intitule_reponse VARCHAR(255), bonne_reponse INT(10), reponse_user INT(10))';
+	
+	$CreateTT=$bdd->exec($requete);
+
+}
