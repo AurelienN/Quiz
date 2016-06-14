@@ -8,7 +8,7 @@
 
 	$tt = 'tt_'.$_SESSION['id'].$_SESSION['login'];
 
-	echo $tt;
+	//echo $tt;
 
 	//création de la table "temporaire"
 

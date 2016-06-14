@@ -112,7 +112,7 @@ function CountQuiz()
 	return $NbQuiz;
 }
 
-function DropTT($name)
+function DropTT($name) //supprimer la table temporaire 
 {
 	$bdd=connexion();
 
@@ -120,12 +120,51 @@ function DropTT($name)
 	$DropTT->execute();
 }
 
-function CreateTT($name)
+function CreateTT($name) //créer la table temporaire 
 {
 	$bdd=connexion();
 
-	$requete='CREATE TABLE IF NOT EXISTS '. $name .'(ID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, id_question INT(10) UNSIGNED, intitule VARCHAR(255), id_reponse INT(10) UNSIGNED, intitule_reponse VARCHAR(255), bonne_reponse INT(10), reponse_user INT(10))';
+	$requete='CREATE TABLE IF NOT EXISTS '. $name .'(ID INT(100) UNSIGNED AUTO_INCREMENT PRIMARY KEY, id_question INT(100) UNSIGNED, intitule VARCHAR(255), id_bonne_reponse int(100), id_reponse_user INT(100))';
 	
 	$CreateTT=$bdd->exec($requete);
+}
 
+function MAJtt($name, $idquiz) //Sélection des questions
+{
+	$bdd=connexion();
+	$insert='INSERT INTO '. $name .'(id_question, intitule)
+				SELECT q.id, q.intitule FROM question q WHERE q.quiz_id = '. $idquiz .' ORDER BY RAND() LIMIT 0, 10';
+	$insertTT=$bdd->exec($insert);
+}
+
+function GetTT($name) //récupération des questions
+{
+	$bdd=connexion();
+
+	$RecuplisteQuiz=$bdd->prepare('SELECT * FROM '. $name);
+	$RecuplisteQuiz->execute();
+	$listeQuestion=$RecuplisteQuiz->fetchAll();
+
+	return $listeQuestion;
+}
+
+function GetNbReponse($id_question) //récupération des réponses
+{
+	$bdd=connexion();
+
+	$req='SELECT count(id) as NbRep FROM reponse WHERE question_id = ' . $id_question;
+
+	//echo $req;
+
+	$Nbreponses=$bdd->prepare($req);
+	$Nbreponses->execute();
+	$NbRep=$Nbreponses->fetch();
+
+	//print_r($NbRep['NbRep']);
+
+	//echo $Nbreponses;
+
+	return $Nbreponses;
+
+	//$nbreps=$Nbreponses->fetch();
 }

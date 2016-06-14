@@ -15,32 +15,21 @@ DROP TABLE IF EXISTS `explication`;
 CREATE TABLE IF NOT EXISTS `explication` (
   `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT,
   `intitulé` varchar(255) NOT NULL,
-  `reponse_id` int(100) UNSIGNED NOT NULL,
+  `question_id` int(100) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `reponse_id` (`reponse_id`)
+  KEY `question_id` (`question_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `explication`
 --
 
-INSERT INTO `explication` (`id`, `intitulé`, `reponse_id`) VALUES
-(1, 'Le nom du chien de Mickey est Pluto', 2),
-(2, 'Le prénom de Disney était Walter Elias Disney dit Walt', 4),
-(3, 'Le prénom de Disney était Walter Elias Disney dit Walt', 5),
-(4, 'Le prénom de Disney était Walter Elias Disney dit Walt', 6),
-(5, 'Le prénom de Disney était Walter Elias Disney dit Walt', 7),
-(6, 'L''équipe de France de football a été championne du monde en 1998', 9),
-(7, 'L''équipe de France de football a été championne du monde en 1998', 10),
-(8, 'L''équipe de France de football a été championne du monde en 1998', 11),
-(9, 'L''équipe de France de football a été championne du monde en 1998', 12),
-(10, 'Le meilleur buteur de l''équipe de France de Football est Thierry Henry', 14),
-(11, 'Le meilleur buteur de l''équipe de France de Football est Thierry Henry', 15),
-(12, 'Le meilleur buteur de l''équipe de France de Football est Thierry Henry', 16),
-(13, 'Le meilleur buteur de l''équipe de France de Football est Thierry Henry', 17),
-(14, 'Le meilleur buteur de l''équipe de France de Handball est Jérôme Fernandez', 19),
-(15, 'Le meilleur buteur de l''équipe de France de Handball est Jérôme Fernandez', 20),
-(16, 'Le meilleur buteur de l''équipe de France de Handball est Jérôme Fernandez', 21);
+INSERT INTO `explication` (`id`, `intitulé`, `question_id`) VALUES
+(1, 'Le nom du chien de Mickey est Pluto', 1),
+(2, 'Le prénom de Disney était Walter Elias Disney dit Walt', 2),
+(3, 'L''équipe de France de football a été championne du monde en 1998', 3),
+(4, 'Le meilleur buteur de l''équipe de France de Football est Thierry Henry', 4),
+(5, 'Le meilleur buteur de l''équipe de France de Handball est Jérôme Fernandez', 5);
 
 -- --------------------------------------------------------
 
@@ -85,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `question` (
 -- Contenu de la table `question`
 --
 
-INSERT INTO `question` (`id`, `intitulé`, `quiz_id`) VALUES
+INSERT INTO `question` (`id`, `intitule`, `quiz_id`) VALUES
 (1, 'Quel est le nom du chien de mickey?', 1),
 (2, 'Comment s’appelait Disney?', 1),
 (3, 'En quelle année l''équipe de France de Football fût elle championne du monde?', 3),
@@ -188,7 +177,7 @@ INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `avg_score`, `nb_quiz`,
 -- Contraintes pour la table `explication`
 --
 ALTER TABLE `explication`
-  ADD CONSTRAINT `fk_reponse_explication` FOREIGN KEY (`reponse_id`) REFERENCES `reponse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_question_explication` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `historique`

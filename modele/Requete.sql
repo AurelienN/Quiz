@@ -76,3 +76,14 @@ SELECT * FROM tt_2root;
 
 SELECT count(*) FROM reponse WHERE question_id = :id
 
+
+--
+-- Aurelien le 14/06/2016
+-- requete pour récupérer la liste de question et de réponse.
+--
+
+INSERT INTO tt_2root(id_question, intitule, id_reponse, intitule_reponse, bonne_reponse)
+SELECT QN.id, QN.intitule, r.id, r.intitule, r.bonne_reponse
+FROM reponse r
+INNER JOIN (SELECT q.id, q.intitule FROM question q WHERE q.quiz_id = 3 ORDER BY RAND() LIMIT 0, 10) AS QN
+on r.question_id = QN.id

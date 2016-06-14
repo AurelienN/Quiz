@@ -101,12 +101,37 @@ function AfficherListeQuiz() //retourne la liste des types de quiz disponible.
 }
 
 
-function Drop($name)
+function Drop($name) //suppression de la tt
 {
 	DropTT($name);
 }
 
-function create($name)
+function create($name) //création de la tt
 {
 	CreateTT($name);
+}
+
+function InsertTT($name, $idquiz) //ajout des données à la table tt
+{
+	MAJtt($name, $idquiz);
+}
+
+function afficherTT($name)
+{
+	$listeQuestions = GetTT($name);
+
+	foreach($listeQuestions as $cle => $listeQuestion)
+	{
+		$listeQuestions[$cle]['id_question']=htmlspecialchars($listeQuestion['id_question']);
+		$listeQuestions[$cle]['intitule']=htmlspecialchars($listeQuestion['intitule']);
+	}
+
+	include_once('..\vue\QuestionnaireAffResultat.php');
+
+}
+function NbRep($idquest)
+{
+	$Nbreponses = GetNbReponse($idquest);
+
+	return $Nbreponses;
 }
