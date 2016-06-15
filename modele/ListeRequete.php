@@ -164,7 +164,20 @@ function GetNbReponse($id_question) //récupération des réponses
 
 	//echo $Nbreponses;
 
-	return $Nbreponses;
+	return $NbRep;
 
 	//$nbreps=$Nbreponses->fetch();
+}
+
+function GetReponse($id_question)
+{
+	$bdd=connexion();
+
+	$req='SELECT id, intitule, bonne_reponse FROM reponse WHERE question_id = '. $id_question .' ORDER BY RAND()';
+	//echo $req;
+	$reponses=$bdd->prepare($req);
+	$reponses->execute();
+	$Reponses=$reponses->fetchAll();
+
+	return $Reponses;
 }

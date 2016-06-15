@@ -80,11 +80,11 @@ function GetHistoQuizUser($IdUser) //Retourne les scores et les types de quiz qu
 	include_once('..\vue\membreAffResul.php');
 }
 
-function GetNbQuiz() //Retourne le nombre de type de quiz
-{
-	$NbQuiz = CountQuiz();
-	return $NbQuiz;
-}
+//function GetNbQuiz() //Retourne le nombre de type de quiz
+//{
+//	$NbQuiz = CountQuiz();
+//	return $NbQuiz;
+//}
 
 function AfficherListeQuiz() //retourne la liste des types de quiz disponible.
 {
@@ -131,7 +131,26 @@ function afficherTT($name)
 }
 function NbRep($idquest)
 {
-	$Nbreponses = GetNbReponse($idquest);
+	$Nbreponses = GetNbReponse($idquest);	
 
 	return $Nbreponses;
+}
+
+function reponses($idquest)
+{
+	//echo 'id_quest:' . $idquest;
+	$Reponses = GetReponse($idquest);
+
+	//print_r($Reponses);
+
+	foreach($Reponses as $cle => $Reponse)
+	{
+		$Reponses[$cle]['id']=$Reponse['id'];
+		$Reponses[$cle]['intitule']=htmlspecialchars($Reponse['intitule']);
+		$Reponses[$cle]['bonne_reponse']=$Reponse['bonne_reponse'];
+	}
+
+	return $Reponses;
+
+	//include_once('..\vue\QuestionnaireAffResultat.php');
 }

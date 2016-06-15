@@ -13,6 +13,6 @@
 
 	$listeQuestion = afficherTT($nomTT);
 
-
+	//print_r($listeQuestion);
 
 ?>

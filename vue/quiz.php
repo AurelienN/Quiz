@@ -4,8 +4,6 @@
 
 	$iduser = GetIdUser($_SESSION['login']); //Renvoit l'id de l'utilisateur.
 
-	$NbQuiz=GetNbQuiz(); //Renvoit le nombre de type de quiz différent.
-
 	$tt = 'tt_'.$_SESSION['id'].$_SESSION['login'];
 
 	//echo $tt;
