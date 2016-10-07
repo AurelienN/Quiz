@@ -33,6 +33,7 @@
 				$success = settype($nb_rep, "int"); // Sert à transformer le string provenant de l'array en integer pour la boucle du while.
 				//echo $nb_rep;
 
+				//affichage des réponse
 				$i = 0;
 				while($i < $nb_rep)
 				{

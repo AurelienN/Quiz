@@ -11,7 +11,7 @@
 
 	MAJtt($nomTT, $_POST['categorie']);
 
-	$listeQuestion = afficherTT($nomTT);
+	$QuestionNo = afficherTT($nomTT);
 
 	//print_r($listeQuestion);
 
