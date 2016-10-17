@@ -5,19 +5,33 @@
 </head>
 <body>
 	<br>
+	<!--
 	<table>
 		<caption>Vos résultats aux Quiz.</caption>
 		<tr>
 			<th class="quiz">Intitulé</th>
 			<th class="quiz">Réponse</th>
 		</tr>
+	-->
 	<?php
 		foreach($listeQuestions as $listeQuestion)
 		{
 	?>
-		<tr class="quiz">
-			<td class="quiz"><?php echo $listeQuestion['intitule']; ?></td>
+		<!--
+			<tr class="quiz">
+			<td class="quiz">
+-->
+			<ul>
+
+			<?php 
+				echo $listeQuestion['intitule']; 
+				echo '<br>';
+			?>
+
+			<!--
+			</td>
 			<td class="reponse">
+		-->
 			
 			<?php 
 				//$Nbreponses = NbRep($listeQuestion['id_question']); //récupération du nombre de réponse par question pour création de la boucle d'affichage des réponses.
@@ -37,8 +51,9 @@
 				$i = 0;
 				while($i < $nb_rep)
 				{
+					echo '<li>';
 					print_r($Reponse[$i]['intitule']);
-					
+					echo '</li>';
 					echo '<br>';
 					$i++;
 				}
@@ -50,13 +65,19 @@
 				//print_r($reponses);
 				//print_r($Nbreponses);
 			?>
+
+		</ul>
+			<!--
 			</td>
 		</tr>
+			-->
 		<br><br>
 	<?php
 		}
 	?>
+	<!--
 	</table>
+	-->
 	<br>
 	<a href="membre.php">Retour à la page d'accueil</a>
 	
